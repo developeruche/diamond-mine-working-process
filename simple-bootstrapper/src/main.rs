@@ -14,7 +14,6 @@ use std::path::Path;
 fn main() -> io::Result<()> {
 
     // Obtain the project name from the command line arguments
-    println!("Enter project name!");
     let args: Vec<String> = env::args().collect();
 
     if args.len() < 2 {
@@ -23,18 +22,14 @@ fn main() -> io::Result<()> {
     }
 
     let project_name = &args[2];
-
     println!("Creating project: {}", project_name);
 
-    // now creating the project directory
-
+    // now creating the project directories
     fs::create_dir(project_name)?;
     fs::create_dir(format!("{}/src", project_name))?;
-
     println!("Project directory created successfully!");
 
     // here goes the projects content 
-
     let main_rs = format!("fn main() {{\n\tprintln!(\"Hello, world!\");\n}}");
     let lib_rs = format!("pub fn hello() {{\n\tprintln!(\"Hello, world!\");\n}}");
     let cargo_toml = format!(r#"
@@ -45,18 +40,17 @@ fn main() -> io::Result<()> {
 
         [dependencies]
     "#, project_name);
-
-    println!("Creating project files!");
+    println!("Creating project files content!");
 
 
     // now creating the files
     fs::write(format!("{}/src/main.rs", project_name), main_rs)?;
     fs::write(format!("{}/src/lib.rs", project_name), lib_rs)?;
     fs::write(format!("{}/Cargo.toml", project_name), cargo_toml)?;
+    println!("Project files created successfully!");
+
 
     // done with the project creation
     println!("Project created successfully:: {}!", project_name);
-
-
     Ok(())
 }
