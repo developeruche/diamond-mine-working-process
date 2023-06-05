@@ -1,0 +1,6 @@
+This is the file the cli program would be searching thourgh 
+learning rust has been an awesome ride 
+this is the most different language I have learnt since 
+I started my software development road 
+This are not going out of hand... hopefully all this is in a 
+bid to become a substrate runtime engineer!
