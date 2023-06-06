@@ -10,4 +10,4 @@ edition = "2021"
 
 [lib]
 name = "simple_bootstrapper_lib"
-crate-type = ["cdylib"]
+# crate-type = ["cdylib"]

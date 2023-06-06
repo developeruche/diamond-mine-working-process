@@ -1,0 +1,1 @@
+/home/developeruche/Documents/project/diamond-mine-raw/simple-bootstrapper-lib/target/debug/simple-bootstrapper-lib: /home/developeruche/Documents/project/diamond-mine-raw/simple-bootstrapper-lib/src/lib.rs /home/developeruche/Documents/project/diamond-mine-raw/simple-bootstrapper-lib/src/main.rs
