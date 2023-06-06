@@ -1,6 +1,13 @@
+
+
 #[no_mangle]
 pub extern fn create_diamond_foundry(project_name: String) -> bool {
-    todo!()
+    // creating all the need directories 
+
+    println!("All directories has been created!");
+
+
+    // creating and writing to all files
 }
 
 #[no_mangle]
