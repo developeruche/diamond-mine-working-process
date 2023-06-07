@@ -1,11 +1,15 @@
-use std::{fs, error::Error};
+use std::{fs};
 
 #[no_mangle]
-pub extern fn create_a_project(project_name: String) -> Result<(), Box<dyn Error>> {
+pub extern "C" fn create_a_project(project_name: &String) -> i32 {
     // creating all the need directories 
-    println!("Creating all the need directories: {}", &project_name);
-    fs::create_dir(&project_name)?;
-    fs::create_dir(format!("{}/src", &project_name))?;
+    println!("Creating all the need directories: {}", project_name);
+    fs::create_dir(project_name).unwrap_or_else(|err| {
+        println!("Error creating project directory: {}", err);
+    });
+    fs::create_dir(format!("{}/src", &project_name)).unwrap_or_else(|err| {
+        println!("Error creating src directory: {}", err);
+    });
     println!("Project directory created successfully!");
 
 
@@ -23,16 +27,21 @@ pub extern fn create_a_project(project_name: String) -> Result<(), Box<dyn Error
     println!("Creating project files content!");
 
 
-    fs::write(format!("{}/src/main.rs", project_name), main_rs)?;
-    fs::write(format!("{}/src/lib.rs", project_name), lib_rs)?;
-    fs::write(format!("{}/Cargo.toml", project_name), cargo_toml)?;
+    fs::write(format!("{}/src/main.rs", project_name), main_rs).unwrap_or_else(|err| {
+        println!("Error writing to main.rs: {}", err);
+    });
+    fs::write(format!("{}/src/lib.rs", project_name), lib_rs).unwrap_or_else(|err| {
+        println!("Error writing to lib.rs: {}", err);
+    });
+    fs::write(format!("{}/Cargo.toml", project_name), cargo_toml).unwrap_or_else(|err| {
+        println!("Error writing to Cargo.toml: {}", err);
+    });
     println!("Project files created successfully!");
 
 
     println!("All directories has been created!");
 
-    Ok(())
-
+    1
 
     // creating and writing to all files
 }
